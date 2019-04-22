@@ -1,0 +1,37 @@
+.select-css {
+    display: block;
+    font-size: 16px;
+    
+    
+    color: #737373;
+    
+    padding: .6em 1.4em .5em 1.9em;
+    width: 90%;
+    margin-left: -10%;
+    
+    border:0px;
+   	outline:0px;
+    box-shadow: 9px 10px 40px 0 rgba(0,0,0,0.1), 0 8px 10px 0 rgba(0,0,0,0.1);
+
+    border-radius: .5em;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #FFFFFF	;
+    background-repeat: no-repeat, repeat;
+}
+.select-css::-ms-expand {
+    display: none;
+}
+.select-css:hover {
+    border-color: #888;
+}
+.select-css:focus {
+    
+    color: #222; 
+    outline: none;
+}
+.select-css option {
+    font-weight:normal;
+
+}

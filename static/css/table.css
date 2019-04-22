@@ -1,0 +1,63 @@
+.files{
+  width: 100%;
+  
+}
+
+#customers {
+  border-collapse: collapse;
+  width: 90%;
+  margin: auto;
+}
+
+#customers td {
+  border-top: 1px solid #e5e8e8;
+  border-bottom: 1px solid #e5e8e8;
+  color: #808080;
+  padding: 8px;
+}
+
+#customers th{
+  padding: 15px;
+  border: 0 0 0 0;
+}
+
+#customers tr:nth-child(even){background-color: #eef4f4;}
+
+#customers tr:hover {background-color:#E8ECEC;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #eaeded;
+  border-bottom: 2px solid #e5e8e8;
+  color: #8c8c8c;
+}
+.download-img{
+    border: 0;
+    width: 30px;
+    height: 30px;
+    opacity: 0.6;
+    margin-left: 10%;
+}
+.delete-img{
+    border: 0;
+    width: 15px;
+    height: 15px;
+    opacity: 0.6;
+    margin-left: 15%;
+}
+.play-img{
+  border: 0;
+    width: 22px;
+    height: 22px;
+    opacity: 0.6;
+    margin-left: 15%;
+
+}
+.tb-file{
+  border-radius: 12px 0 0 0;
+}
+.tb-delete{
+  border-radius: 0 12px 0 0;
+}
