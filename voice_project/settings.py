@@ -26,11 +26,18 @@ SECRET_KEY = 'kcxjw!9y@31njfr#@&w^x8l84qosl-8da@!1^57ia!yc*t9g_k'
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1']
-
+INTERNAL_IPS = '127.0.0.1'
 
 # Application definition
 
 INSTALLED_APPS = [
+	
+	# apps
+	'users',
+
+	# debug
+	'debug_toolbar',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,6 +47,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+	'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -47,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'voice_project.urls'
@@ -75,8 +84,12 @@ WSGI_APPLICATION = 'voice_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'voice',
+        'USER': 'voice_user',
+        'PASSWORD': 'peoplecanfly5',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
@@ -99,6 +112,16 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'default-locmemcache',
+        'TIMEOUT': 5,
+    }
+}
+
+# auntification 
+AUTH_USER_MODEL = 'users.CustomUser'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/

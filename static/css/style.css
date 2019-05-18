@@ -1,8 +1,19 @@
-body{
+html, body{
+	height: 100%;
 	background-color: #EFF4F4;
 	font-family: 'Raleway', sans-serif;
 }
-
+.wrap{
+	display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.content{
+	flex: 1 0 auto;
+}
+.footer{
+	flex: 0 0 auto;
+}
 body::-webkit-scrollbar {
     width: 8px;
     
@@ -29,11 +40,12 @@ body::-webkit-scrollbar-thumb {
 
 .menu{
 	margin-right: auto;
-	width: 300px;
+	width: 430px;
 	float: right;
 	
 	font-size: 18px;
 	margin-top: 20px;
+	
 }
 .menu a{
 	margin-right: 30px; 
@@ -338,5 +350,17 @@ body::-webkit-scrollbar-thumb {
 	position: relative;
 	height: 30px;
 	display: inline-block;
+}
+.footer{
+	margin:  20px 20px 20px 0;
+	
+	font-family: 'Muli', sans-serif;
+	color: #8c8c8c;
+}
+.email-span{
+	float: right;
+}
+.date-foot{
+	margin-left: 50%;
 }
 

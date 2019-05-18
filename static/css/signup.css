@@ -1,0 +1,11 @@
+.signup-frame{
+	border: 1px solid black;
+	height: 400px;
+	width: 40%;
+	margin: auto;
+}
+.submit-btn{
+	height: 40px;
+	width: 30%;
+	float: right;
+}
