@@ -18,28 +18,24 @@ from django.contrib import admin
 from django.shortcuts import render, redirect
 from django.conf import settings
 
-from django.urls import include, path  
+from django.urls import include, path
 import users.urls
+import core.urls
 
 
-
-def frontpage(request):
-    return render(request, 'main.html')
-
-    
 def about(request):
     return render(request, 'about.html')
 
+
 urlpatterns = [
-	path('', frontpage),
+    path('', include(core.urls, namespace='core')),
 
     path('about/', about),
-    
-    path('user/', include(
-        users.urls, namespace='user')),
+
+    path('user/', include(users.urls, namespace='user')),
 
     path('admin/', admin.site.urls),
-    
+
 ]
 
 

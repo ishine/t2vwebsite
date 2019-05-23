@@ -10,24 +10,26 @@
   <!-- INFORMATION -->
     <!--*************-->
     <!--*************-->
-    <div class="info-panel">
-        <div class="welcome-info">
-            <div class="auth-token">
-                <div id="copyToken" class="get-token" onclick="copyToken()">Get token</div>
-            </div>
-            <div class="name-info">
-                <span>WannaFly</span>
-            </div>
-        </div>
-        <div class="balance-info">
-            <a href="#">
-                <div class="btn-deposit">
-                    <span>Deposit</span>
+    {% if request.user.is_authenticated %}
+        <div class="info-panel">
+            <div class="welcome-info">
+                <div class="auth-token">
+                    <div id="copyToken" class="get-token" onclick="copyToken()">Get token</div>
                 </div>
-            </a>
-            <div class="balance-info-sym"><span class="symbols-balance">1000 : symbols</span></div>
-        </div>
-    </div> 
+                <div class="name-info">
+                    <span>{{ request.user.email }}</span>
+                </div>
+            </div>
+            <div class="balance-info">
+                <a href="#">
+                    <div class="btn-deposit">
+                        <span>Deposit</span>
+                    </div>
+                </a>
+                <div class="balance-info-sym"><span class="symbols-balance">{{ request.user.balance }} : symbols</span></div>
+            </div>
+        </div> 
+    {% endif %}
     <!--*************-->
     <!--*************-->
     <!--*************-->
@@ -120,117 +122,40 @@
     <!-- FILE TABLE -->
     <!--************-->
     <!--************-->
-    <div class="files">
-        <table id="customers">
-            <tr>
-                <th>Play</th>
-                <th class="tb-file">Filename</th>
-                <th>Duration</th>
-                <th>Date</th>
-                <th>Download</th>
-                <th class="tb-delete">Delete</th>
-            </tr>
-            <tr>
-                <td><img class="play-img" src="{% static 'image/play.png' %}"></td>
-                <td>Alfreds Futterkiste</td>
-                <td>1:30</td>
-                <td>24.05.2019</td>
-                <td><a class="file-ref" href="{% static 'audio/rammstein.mp3' %}" download>
-                        <img class="download-img" src="{% static 'image/download-img.png' %}"></a></td>
-                <td><a href="#">
-                        <img class="delete-img" src="{% static 'image/delete.png' %}"></a></td>
-            </tr>
-            <tr>
-                <td><img class="play-img" src="{% static 'image/play.png' %}"></td>
-                <td>Berglunds snabbköp</td>
-                <td>1:30</td>
-                <td>24.05.2019</td>
-                <td><a class="file-ref" href="{% static 'audio/bbb.mp3' %}" download>
-                        <img class="download-img" src="{% static 'image/download-img.png' %}"></a></td>
-                <td><a href="#">
-                        <img class="delete-img" src="{% static 'image/delete.png' %}"></a></td>
-            </tr>
-            <tr>
-                <td><img class="play-img" src="{% static 'image/play.png' %}"></td>
-                <td>Centro comercial Moctezuma</td>
-                <td>1:30</td>
-                <td>24.05.2019</td>
-                <td><a class="file-ref" href="22" download>
-                        <img class="download-img" src="{% static 'image/download-img.png' %}"></a></td>
-                <td><a href="#">
-                        <img class="delete-img" src="{% static 'image/delete.png' %}"></a></td>
-            </tr>
-            <tr>
-                <td><img class="play-img" src="{% static 'image/play.png' %}"></td>
-                <td>Ernst Handel</td>
-                <td>1:30</td>
-                <td>24.05.2019</td>
-                <td><a class="file-ref" href="#" download>
-                        <img class="download-img" src="{% static 'image/download-img.png' %}"></a></td>
-                <td><a href="#">
-                        <img class="delete-img" src="{% static 'image/delete.png' %}"></a></td>
-            </tr>
-            <tr>
-                <td><img class="play-img" src="{% static 'image/play.png' %}"></td>
-                <td>Island Trading</td>
-                <td>1:30</td>
-                <td>24.05.2019</td>
-                <td><a class="file-ref" href="#" download>
-                        <img class="download-img" src="{% static 'image/download-img.png' %}"></a></td>
-                <td><a href="#">
-                        <img class="delete-img" src="{% static 'image/delete.png' %}"></a></td>
-            </tr>
-            <tr>
-                <td><img class="play-img" src="{% static 'image/play.png' %}"></td>
-                <td>Königlich Essen</td>
-                <td>1:30</td>
-                <td>24.05.2019</td>
-                <td><a class="file-ref" href="#" download>
-                        <img class="download-img" src="{% static 'image/download-img.png' %}"></a></td>
-                <td><a href="#">
-                        <img class="delete-img" src="{% static 'image/delete.png' %}"></a></td>
-            </tr>
-            <tr>
-                <td><img class="play-img" src="{% static 'image/play.png' %}"></td>
-                <td>Laughing Bacchus Winecellars</td>
-                <td>1:30</td>
-                <td>24.05.2019</td>
-                <td><a class="file-ref" href="#" download>
-                        <img class="download-img" src="{% static 'image/download-img.png' %}"></a></td>
-                <td><a href="#">
-                        <img class="delete-img" src="{% static 'image/delete.png' %}"></a></td>
-            </tr>
-            <tr>
-                <td><img class="play-img" src="{% static 'image/play.png' %}"></td>
-                <td>Magazzini Alimentari Riuniti</td>
-                <td>1:30</td>
-                <td>24.05.2019</td>
-                <td><a class="file-ref" href="#" download>
-                        <img class="download-img" src="{% static 'image/download-img.png' %}"></a></td>
-                <td><a href="#">
-                        <img class="delete-img" src="{% static 'image/delete.png' %}"></a></td>
-            </tr>
-            <tr>
-                <td><img class="play-img" src="{% static 'image/play.png' %}"></td>
-                <td>North/South</td>
-                <td>1:30</td>
-                <td>24.05.2019</td>
-                <td><a class="file-ref" href="#" download>
-                        <img class="download-img" src="{% static 'image/download-img.png' %}"></a></td>
-                <td><a href="#">
-                        <img class="delete-img" src="{% static 'image/delete.png' %}"></a></td>
-            </tr>
-            <tr>
-                <td><img class="play-img" src="{% static 'image/play.png' %}"></td>
-                <td>Paris spécialités</td>
-                <td>1:30</td>
-                <td>24.05.2019</td>
-                <td><a class="file-ref" href="#" download>
-                        <img class="download-img" src="{% static 'image/download-img.png' %}"></a></td>
-                <td><a href="#">
-                        <img class="delete-img" src="{% static 'image/delete.png' %}"></a></td>
-            </tr>
-        </table>
-    </div>
+    {% if request.user.is_authenticated %}
+        <div class="files">
+            <table id="customers">
+                <tr>
+                    <th>Play</th>
+                    <th class="tb-file">Filename</th>
+                    <th>Duration</th>
+                    <th>Date</th>
+                    <th>Download</th>
+                    <th class="tb-delete">Delete</th>
+                </tr>
+                <tr>
+                    <td><img class="play-img" src="{% static 'image/play.png' %}"></td>
+                    <td>Alfreds Futterkiste</td>
+                    <td>1:30</td>
+                    <td>24.05.2019</td>
+                    <td><a class="file-ref" href="{% static 'audio/rammstein.mp3' %}" download>
+                            <img class="download-img" src="{% static 'image/download-img.png' %}"></a></td>
+                    <td><a href="#">
+                            <img class="delete-img" src="{% static 'image/delete.png' %}"></a></td>
+                </tr>
+                <tr>
+                    <td><img class="play-img" src="{% static 'image/play.png' %}"></td>
+                    <td>Berglunds snabbköp</td>
+                    <td>1:30</td>
+                    <td>24.05.2019</td>
+                    <td><a class="file-ref" href="{% static 'audio/bbb.mp3' %}" download>
+                            <img class="download-img" src="{% static 'image/download-img.png' %}"></a></td>
+                    <td><a href="#">
+                            <img class="delete-img" src="{% static 'image/delete.png' %}"></a></td>
+                </tr>
+            
+            </table>
+        </div>
+    {% endif %}
     <div class="superinfo"></div>
 {% endblock %}

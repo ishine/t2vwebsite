@@ -4,8 +4,11 @@ from . import views
 
 app_name = 'core'
 urlpatterns = [
-    path('',
-         views.MovieList.as_view(),
-         name='MovieList'),
-    
+	path('', 
+		views.MainPage.as_view(), 
+		name='MainPage'),
+	path('create_voice/', 
+		views.CreateMessageView.as_view(), 
+		name='CreateVoice'),
+	
 ]
