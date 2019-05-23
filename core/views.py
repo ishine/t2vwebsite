@@ -45,3 +45,13 @@ class CreateMessageView(LoginRequiredMixin, CreateView):
         return {
             'owner': self.request.user.id,
         }
+
+class DeleteMassageView(LoginRequiredMixin, DeleteView):
+    def get(self, *args, **kwargs):
+        return self.post(*args, **kwargs)
+    model = VoiceTrack
+
+    def get_success_url(self):
+        return reverse('core:MainPage')
+
+    

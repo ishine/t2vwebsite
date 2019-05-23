@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 	'debug_toolbar',
 	
 	'crispy_forms',
+	'django.contrib.humanize',
 
 	'django.contrib.admin',
 	'django.contrib.auth',
@@ -47,6 +48,7 @@ INSTALLED_APPS = [
 	'django.contrib.sessions',
 	'django.contrib.messages',
 	'django.contrib.staticfiles',
+
 ]
 
 MIDDLEWARE = [
@@ -125,6 +127,7 @@ CACHES = {
 
 # auntification 
 AUTH_USER_MODEL = 'users.CustomUser'
+ACCOUNT_ACTIVATION_DAYS = 7
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/

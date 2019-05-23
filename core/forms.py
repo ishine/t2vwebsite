@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth import get_user_model
-from django.core.validators import MaxValueValidator, MinValueValidator
+from django.core.validators import MaxValueValidator, MinValueValidator, MinLengthValidator, MaxLengthValidator
 from core.models import VoiceTrack, LANGUAGES, VOICES
 
 
@@ -17,7 +17,7 @@ class VoiceTrackCreationForm(forms.ModelForm):
 										 'cols': '30',
 										 'rows': '5',
 										 }),
-			validators=[MinValueValidator(0), MaxValueValidator(999999)],
+			validators=[MinLengthValidator(0), MaxLengthValidator(999999)],
 			required=True,
 		)
 
@@ -34,7 +34,7 @@ class VoiceTrackCreationForm(forms.ModelForm):
 	speed = forms.IntegerField(widget=forms.NumberInput(attrs={'type':'range', 
 														'name' : 'rangeInput2',
 														'onchange' : 'updateTextInput2(this.value);',
-														'value' : '0',
+														'value' : '1',
 														'step' : '0.05',
 														'min' : '0.25',
 														'max' : '2',

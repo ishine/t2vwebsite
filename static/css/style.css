@@ -3,6 +3,9 @@ html, body{
 	background-color: #EFF4F4;
 	font-family: 'Raleway', sans-serif;
 }
+td{
+	font-family: 'Muli', sans-serif;
+}
 .wrap{
 	display: flex;
   flex-direction: column;
@@ -272,7 +275,7 @@ body::-webkit-scrollbar-thumb {
 
 /* SUBMIT */
 
-.submit-btn{
+.btn-primary{
 	position: relative;
 	margin-top: 10%;
 	width: 90%;
@@ -289,10 +292,10 @@ body::-webkit-scrollbar-thumb {
 	line-height: 1.4;
 	box-shadow: 0 3px 50px 0 rgba(0,0,0,0.15), 0 4px 20px 0 rgba(0,0,0,0.15);
 }
-.submit-btn:focus { 
+.btn-primary:focus { 
   outline: none;
 }
-.submit-btn:hover{
+.btn-primary:hover{
 	background-color: #E1DFDF;
 }
 .download-input-btn{

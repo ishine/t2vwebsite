@@ -10,6 +10,7 @@ django = "*"
 psycopg2 = "*"
 django-debug-toolbar = "*"
 django-crispy-forms = "*"
+django-registation = "*"
 
 [requires]
 python_version = "3.6"
