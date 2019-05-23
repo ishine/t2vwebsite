@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 	
 	'crispy_forms',
 	'django.contrib.humanize',
+	'captcha',
 
 	'django.contrib.admin',
 	'django.contrib.auth',
@@ -127,7 +128,16 @@ CACHES = {
 
 # auntification 
 AUTH_USER_MODEL = 'users.CustomUser'
-ACCOUNT_ACTIVATION_DAYS = 7
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'gwinbleidd99@gmail.com'
+EMAIL_HOST_PASSWORD = 'oziappatwyzrrmon'
+EMAIL_PORT = 587
+
+RECAPTCHA_PUBLIC_KEY = '6LdeL6UUAAAAACBQOEElmrQrGHrHWPEq_Y05FIio'
+RECAPTCHA_PRIVATE_KEY = '6LdeL6UUAAAAAP_IBIa-31ezLRuHPqNwLwKPYgV0'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/

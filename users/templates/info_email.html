@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/confirm.css' %}">
+{% endblock %}
+{% block title %}
+Activate
+{% endblock %}
+
+
+{% block body %}
+<div class="confirm">
+    <span class="confirm_text">{{ massage }}</span>
+</div>
+
+{% endblock %}

@@ -71,6 +71,11 @@ body::-webkit-scrollbar-thumb {
 	color: #8c8c8c;
 	font-size: 40px;
 }
+.main_page_link:hover{
+	
+	color: white;
+}
+
 .info-panel{
 	width: 80%;
 	margin: auto;
@@ -296,7 +301,7 @@ body::-webkit-scrollbar-thumb {
   outline: none;
 }
 .btn-primary:hover{
-	background-color: #E1DFDF;
+	background-color: #8c8c8c;
 }
 .download-input-btn{
 	margin-top: -25px;

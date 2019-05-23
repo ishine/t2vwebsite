@@ -4,6 +4,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator, MinLeng
 from core.models import VoiceTrack, LANGUAGES, VOICES
 
 
+
 class VoiceTrackCreationForm(forms.ModelForm):
 	owner = forms.ModelChoiceField(
 		widget=forms.HiddenInput,
@@ -11,6 +12,8 @@ class VoiceTrackCreationForm(forms.ModelForm):
 		disabled=True,
 	)
 
+	
+	
 	text = forms.CharField(
 			widget=forms.Textarea(attrs={'class': 'text-input-place',
 										 'placeholder': 'Text',

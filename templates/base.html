@@ -29,7 +29,13 @@
         <div class="content">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <div class="logo" onclick=""><span class="text-logo">UTTER</span></div>
+                    <div class="logo" onclick="">
+                        <a href="{% url "core:MainPage" %}" class="main_page_link">
+                            <span class="text-logo">
+                                UTTER
+                            </span>
+                        </a>
+                    </div>
                     <div class="menu">
                         <a href="#">PRICE</a>
                         <a href="#">ABOUT</a>
@@ -37,7 +43,7 @@
                             <a href="{% url "users:logout" %}">LOGOUT</a>
                         {% else %}
                             <a href="{% url "users:login" %}">LOGIN</a>
-                            <a href="{% url "users:register" %}">SIGNUP</a>
+                            <a href="{% url "users:signup" %}">SIGNUP</a>
                         {% endif %}
 
                     </div>
