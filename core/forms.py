@@ -34,7 +34,7 @@ class VoiceTrackCreationForm(forms.ModelForm):
 								validators=[MinValueValidator(-20), MaxValueValidator(20)],
 								required=True,)
 
-	speed = forms.IntegerField(widget=forms.NumberInput(attrs={'type':'range', 
+	speed = forms.FloatField(widget=forms.NumberInput(attrs={'type':'range', 
 														'name' : 'rangeInput2',
 														'onchange' : 'updateTextInput2(this.value);',
 														'value' : '1',

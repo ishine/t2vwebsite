@@ -17,7 +17,7 @@
                     <div id="copyToken" class="get-token" onclick="copyToken()">Get token</div>
                 </div>
                 <div class="name-info">
-                    <span>{{ request.user.email }}</span>
+                    <span class="email">{{ request.user.email }}</span>
                 </div>
             </div>
             <div class="balance-info">
@@ -132,6 +132,7 @@
                     <th class="tb-file">Name</th>
                     <th>Duration</th>
                     <th>Date</th>
+                    <th>Symbols</th>
                     <th>Language</th>
                     <th>Voice</th>
                     <th>Speed</th>
@@ -143,8 +144,9 @@
                     <tr >
                         <td><img class="play-img" src="{% static 'image/play.png' %}"></td>
                         <td>{{ track }}</td>
-                        <td><span>1:30</span></td>
+                        <td><span>{{ track.duration }}</span></td>
                         <td>{{ track.created | naturalday}}</td>
+                        <td>{{ track.text | length}}</td>
                         <td><span>{{ track.get_language_display }}</span></td>
                         <td><span>{{ track.get_voice_display }}</span></td>
                         <td align="center"><span>{{ track.speed }}</span></td>

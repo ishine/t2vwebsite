@@ -89,19 +89,21 @@ body::-webkit-scrollbar-thumb {
 	width: 30%;
 }
 .balance-info{
+	
+	height: 40px;
 	position: relative;
 	display: inline-block;
 	min-height: 10px;
-	width: 30%;
+	width: 20%;
 	float: right;
 	text-align: right;
 }
 .symbols-balance{
-
+	font-family: 'Muli', sans-serif;
 	color: #8c8c8c;
 	margin-right: 20px;
 
-	font-size: 18px;
+	font-size: 16px;
 
 }
 .name-info{
@@ -327,6 +329,7 @@ body::-webkit-scrollbar-thumb {
 	background-color: #BDB3B3;	
 }
 .btn-deposit{
+
 	position: relative;
 	width: 50%;
 	height: 30px;
@@ -336,7 +339,6 @@ body::-webkit-scrollbar-thumb {
 	max-height: 35px;
 	background-color: #f9fafc;
   	border-radius: 8px;
-  	border: none;
   	color: #8c8c8c;
   	text-align: center;
   	text-decoration: none;
@@ -354,6 +356,7 @@ body::-webkit-scrollbar-thumb {
 
 }
 .balance-info-sym{
+	
 	margin-top: 5px;
 	position: relative;
 	height: 30px;
@@ -371,4 +374,6 @@ body::-webkit-scrollbar-thumb {
 .date-foot{
 	margin-left: 50%;
 }
-
+.email{
+	font-family: 'Muli', sans-serif;
+}

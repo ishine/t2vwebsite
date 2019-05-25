@@ -1,0 +1,14 @@
+span{
+	color: #8c8c8c;
+}
+.change_pass{
+	width: 30%;
+	height: 100px;
+	margin: auto;
+	margin-top: 50px;
+}
+.btn-primary{
+	width: 30%;
+	height: 40px;
+	float: right;
+}
