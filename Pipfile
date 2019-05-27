@@ -12,6 +12,10 @@ django-debug-toolbar = "*"
 django-crispy-forms = "*"
 django-registation = "*"
 django-recaptcha = "*"
+factory-boy = "*"
+djangorestframework = "*"
+markdown = "*"
+django-filter = "*"
 
 [requires]
 python_version = "3.6"

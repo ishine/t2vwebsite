@@ -15,6 +15,7 @@ Login
         {% csrf_token %}
         {{ form | crispy }}
         
+        <span><a href="{% url "users:password_reset" %}">Forgot password?</a></span>
         <button type="submit" class="btn btn-primary" >
         	Login
       	</button >

@@ -25,7 +25,8 @@ urlpatterns = [
 		 name='logout'),
 	url(r'password_change/$',
 		auth_views.PasswordChangeView.as_view(template_name='registration/password_change.html',
-			success_url='password_change_done/')),
+			success_url='password_change_done/'),
+		name='password_change'),
 
 	url(r'password_change_done/',
 		auth_views.PasswordChangeDoneView.as_view(template_name='password_change_done.html')),
@@ -35,7 +36,8 @@ urlpatterns = [
 			email_template_name='registration/password_reset_email.html',
 			subject_template_name='registration/password_reset_subject.txt',
 			success_url='password_reset_done/',
-			from_email='support@yoursite.ma')),
+			from_email='support@yoursite.ma'),
+		name='password_reset'),
 
 	url(r'password_reset_done/',
 		auth_views.PasswordResetDoneView.as_view(template_name='registration/password_reset_done.html')),
