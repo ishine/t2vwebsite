@@ -39,6 +39,8 @@ INSTALLED_APPS = [
 	# debug
 	'debug_toolbar',
 	'rest_framework',
+	'rest_framework_swagger',
+    'rest_framework.authtoken',
 	'crispy_forms',
 	'django.contrib.humanize',
 	'captcha',
@@ -127,8 +129,9 @@ CACHES = {
 }
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
     ),
     'DEFAULT_THROTTLE_CLASSES': (
         'rest_framework.throttling.UserRateThrottle',

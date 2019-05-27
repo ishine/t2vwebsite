@@ -4,9 +4,16 @@ from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, DetailView, DeleteView, ListView, TemplateView
-from .mixins import UserBalanceTextMixin
+
+
+from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated
+
 from core.forms import VoiceTrackCreationForm
 from core.models import VoiceTrack
+from core.serializers import VoiceTrackSerializer
+from core.mixins import UserBalanceTextMixin
+from core.permissions import UserBalanceTextPermission
 
 
 # Create your views here.
@@ -56,3 +63,23 @@ class DeleteMassageView(LoginRequiredMixin, DeleteView):
 		return reverse('core:MainPage')
 
 	
+'''
+____________________________
+
+REST API VIEWS
+____________________________
+
+'''
+
+class VoiceTrackCreateListView(generics.CreateAPIView):
+    permission_classes = (IsAuthenticated, UserBalanceTextPermission)
+    serializer_class = VoiceTrackSerializer
+    
+
+    def get_serializer(self, *args, **kwargs):
+        data = kwargs.get('data', None)
+        if data:
+            new_data = dict(data)
+            new_data['owner'] = self.request.user.id
+            kwargs['data'] = new_data
+        return super().get_serializer(*args, **kwargs)

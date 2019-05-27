@@ -50,8 +50,11 @@ class VoiceTrack(models.Model):
 							 default=AMANDA,)
 
 	def __str__(self):
-		logger.debug("Hello")
+		
 		return self.text[:15]
+
+	def user_have_enough_balance(self, user):
+		return len(self.text) <= user.balance		
 
 	def user_have_permis(self, user):
 		return user == self.owner

@@ -23,16 +23,10 @@ import users.urls
 import core.urls
 
 
-def about(request):
-    return render(request, 'about.html')
-
-
 urlpatterns = [
     path('', include(core.urls, namespace='core')),
 
-    path('about/', about),
-
-    path('user/', include(users.urls, namespace='user')),
+    path('users/', include(users.urls, namespace='user')),
 
     path('admin/', admin.site.urls),
 

@@ -16,6 +16,7 @@ factory-boy = "*"
 djangorestframework = "*"
 markdown = "*"
 django-filter = "*"
+django-rest-swagger = "*"
 
 [requires]
 python_version = "3.6"
