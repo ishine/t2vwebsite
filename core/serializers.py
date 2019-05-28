@@ -20,7 +20,8 @@ class VoiceTrackSerializer(serializers.HyperlinkedModelSerializer):
 			'language', 
 			'voice',)
 		read_only_fields = ('duration', 'created', )
+		
 		extra_kwargs = {
-			'url': {'view_name': 'mailinglist:api-mailing-list-detail'},
-			'subscriber_set': {'view_name': 'mailinglist:api-subscriber-detail'},
-		}
+            'audio': {'allow_null': True, 'required': False},
+            'duration': {'allow_null': True, 'required': False},
+        }

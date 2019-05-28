@@ -33,7 +33,7 @@ class VoiceTrack(models.Model):
 							  on_delete=models.CASCADE,
 							  related_name='tracks')
 
-	audio = models.FileField(upload_to='audio/')
+	audio = models.FileField(upload_to='audio/', blank=True)
 
 	duration =  models.IntegerField(default=0)
 
@@ -65,13 +65,13 @@ class VoiceTrack(models.Model):
 	def save(self, force_insert=False, force_update=False, using=None,
 			 update_fields=None):
 		is_new = self._state.adding or force_insert
-
+		
 		# Desrising balance of user
 		number_of_symbols = len(self.text)
 		own = get_user_model().objects.get(id = self.owner.id)
 		own.balance = F("balance") - number_of_symbols
 		own.save()
-		
+
 		super().save(force_insert=force_insert, force_update=force_update,
 					 using=using, update_fields=update_fields)
 		logger.info("in save, this should be true. is_new:%s" % (is_new))

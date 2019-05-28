@@ -51,7 +51,9 @@ urlpatterns = [
 	url(r'password_reset_complete/',
 		auth_views.PasswordResetCompleteView.as_view(template_name='registration/password_reset_complete.html')),
 	
-	path('api_login/', users.views.LoginAPIView.as_view(), name='api_login'),
+	path('api/login/', users.views.LoginAPIView.as_view(), name='api_login'),
+
+	path('api/balance/', users.views.BalanceAPIView.as_view(), name='api_balance'),
 
 ]
 

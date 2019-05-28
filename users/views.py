@@ -13,6 +13,7 @@ from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 
 
 from .tokens import account_activation_token
@@ -73,3 +74,10 @@ class LoginAPIView(APIView):
             return Response({"token": user.auth_token.key})
         else:
             return Response({"error": "Wrong Credentials"}, status=status.HTTP_400_BAD_REQUEST)
+
+class BalanceAPIView(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request,):
+        return Response({"balance": self.request.user.balance})
+            
