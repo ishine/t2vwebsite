@@ -12,7 +12,7 @@ class UserFactory(factory.DjangoModelFactory):
 
 
 class VoiceTrackFactory(factory.DjangoModelFactory):
-    text = "foo"
+    text = factory.Sequence(lambda n: 'foo%d' % n)
     
     pitch = 0
     speed = 1

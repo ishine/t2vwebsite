@@ -10,7 +10,8 @@ class VoiceTrackSerializer(serializers.HyperlinkedModelSerializer):
 
 	class Meta:
 		model = VoiceTrack
-		fields = ('text', 
+		fields = ('id',
+			'text', 
 			'audio', 
 			'duration', 
 			'created', 
@@ -19,7 +20,7 @@ class VoiceTrackSerializer(serializers.HyperlinkedModelSerializer):
 			'speed', 
 			'language', 
 			'voice',)
-		read_only_fields = ('duration', 'created', )
+		read_only_fields = ('id', 'duration', 'created', )
 		
 		extra_kwargs = {
             'audio': {'allow_null': True, 'required': False},

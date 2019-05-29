@@ -110,9 +110,11 @@ class VoiceTrackList(generics.ListCreateAPIView):
 	permission_classes = (IsAuthenticated,)
 
 	def get_queryset(self):
+	
 		return VoiceTrack.objects.all().filter(owner=self.request.user)
 
 	def list(self, request):
+
 		# Note the use of `get_queryset()` instead of `self.queryset`
 		queryset = self.get_queryset()
 		serializer = VoiceTrackSerializer(queryset, many=True)
