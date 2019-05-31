@@ -17,6 +17,11 @@ djangorestframework = "*"
 markdown = "*"
 django-filter = "*"
 django-rest-swagger = "*"
+celery = "*"
+django-celery-results = "*"
+pika = "*"
+install = "*"
+puka = "*"
 
 [requires]
 python_version = "3.6"

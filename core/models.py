@@ -1,5 +1,8 @@
 import uuid
 import logging
+import time
+import pika
+import datetime
 from django.conf import settings
 from django.db import models
 from django.urls import reverse
@@ -19,6 +22,10 @@ AMANDA = 'AM'
 VOICES = (
 	(AMANDA, 'Amanda'),
 )
+# RabbitMQ conf
+connection = pika.BlockingConnection(
+    pika.ConnectionParameters(host='localhost'))
+channel = connection.channel()
 
 
 class VoiceTrack(models.Model):
@@ -62,6 +69,8 @@ class VoiceTrack(models.Model):
 	class Meta:
 		ordering = ['-created']
 
+	
+
 	def save(self, force_insert=False, force_update=False, using=None,
 			 update_fields=None):
 		is_new = self._state.adding or force_insert
@@ -72,7 +81,13 @@ class VoiceTrack(models.Model):
 		own.balance = F("balance") - number_of_symbols
 		own.save()
 
-		super().save(force_insert=force_insert, force_update=force_update,
-					 using=using, update_fields=update_fields)
-		logger.info("in save, this should be true. is_new:%s" % (is_new))
+		channel.queue_declare(queue='rabbit')
+		channel.basic_publish(exchange='', routing_key='rabbit', body=self.text)
+		print(datetime.datetime.now())
+		
+
+		
+		#super().save(force_insert=force_insert, force_update=force_update,
+					 #using=using, update_fields=update_fields)
+		
 		

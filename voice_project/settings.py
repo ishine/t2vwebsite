@@ -36,14 +36,18 @@ INSTALLED_APPS = [
 	'users',
 	'core',
 	
-	# debug
+	# stuff
 	'debug_toolbar',
+	'crispy_forms',
+	'django.contrib.humanize',
+	
+
+	# other
 	'rest_framework',
 	'rest_framework_swagger',
     'rest_framework.authtoken',
-	'crispy_forms',
-	'django.contrib.humanize',
-	'captcha',
+    'captcha',
+	'django_celery_results',
 
 	'django.contrib.admin',
 	'django.contrib.auth',
@@ -187,3 +191,5 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(
 	BASE_DIR, '../media_root')
 
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_BROKER_URL = 'amqp://localhost'
