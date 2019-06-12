@@ -1,13 +1,11 @@
 import uuid
 import logging
-import time
-import pika
-import datetime
 from django.conf import settings
 from django.db import models
-from django.urls import reverse
 from django.db.models import F
 from django.contrib.auth import get_user_model
+from .client import VoiceGeneratorRpcClient
+
 
 logger = logging.getLogger(__name__)
 
@@ -15,79 +13,71 @@ logger = logging.getLogger(__name__)
 # Language choices
 ENGLISH = 'EN'
 LANGUAGES = (
-	(ENGLISH, 'English'),
+    (ENGLISH, 'English'),
 )
 # Voice choices
 AMANDA = 'AM'
 VOICES = (
-	(AMANDA, 'Amanda'),
+    (AMANDA, 'Amanda'),
 )
 # RabbitMQ conf
-connection = pika.BlockingConnection(
-    pika.ConnectionParameters(host='localhost'))
-channel = connection.channel()
+voice_rpc = VoiceGeneratorRpcClient()
 
 
 class VoiceTrack(models.Model):
 
-	id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
-	created = models.DateTimeField(auto_now_add=True)
- 
-	text = models.CharField(max_length=999999)
+    created = models.DateTimeField(auto_now_add=True)
 
-	owner = models.ForeignKey(to=settings.AUTH_USER_MODEL,
-							  on_delete=models.CASCADE,
-							  related_name='tracks')
+    text = models.CharField(max_length=999999)
 
-	audio = models.FileField(upload_to='audio/', blank=True)
+    owner = models.ForeignKey(to=settings.AUTH_USER_MODEL,
+                              on_delete=models.CASCADE,
+                              related_name='tracks')
 
-	duration =  models.IntegerField(default=0)
+    audio = models.FileField(upload_to='audio/', blank=True)
 
-	pitch = models.SmallIntegerField(default=0)
+    duration = models.IntegerField(default=0)
 
-	speed = models.FloatField(default=1)
+    pitch = models.SmallIntegerField(default=0)
 
-	language = models.CharField(max_length=2,
-								choices=LANGUAGES,
-								default=ENGLISH,)
+    speed = models.FloatField(default=1)
 
-	voice = models.CharField(max_length=2,
-							 choices=VOICES,
-							 default=AMANDA,)
+    language = models.CharField(max_length=2,
+                                choices=LANGUAGES,
+                                default=ENGLISH,)
 
-	def __str__(self):
-		
-		return self.text[:15]
+    voice = models.CharField(max_length=2,
+                             choices=VOICES,
+                             default=AMANDA,)
 
-	def user_have_enough_balance(self, user):
-		return len(self.text) <= user.balance		
+    def __str__(self):
 
-	def user_have_permis(self, user):
-		return user == self.owner
+        return self.text[:15]
 
-	class Meta:
-		ordering = ['-created']
+    def user_have_enough_balance(self, user):
+        return len(self.text) <= user.balance
 
-	
+    def user_have_permis(self, user):
+        return user == self.owner
 
-	def save(self, force_insert=False, force_update=False, using=None,
-			 update_fields=None):
-		is_new = self._state.adding or force_insert
-		
-		# Desrising balance of user
-		number_of_symbols = len(self.text)
-		own = get_user_model().objects.get(id = self.owner.id)
-		own.balance = F("balance") - number_of_symbols
-		own.save()
+    class Meta:
+        ordering = ['-created']
 
-		channel.queue_declare(queue='rabbit')
-		channel.basic_publish(exchange='', routing_key='rabbit', body=self.text)
-		print(datetime.datetime.now())
-		
+    def save(self, force_insert=False, force_update=False, using=None,
+             update_fields=None):
+        is_new = self._state.adding or force_insert
 
-		
-		#super().save(force_insert=force_insert, force_update=force_update,
-					 #using=using, update_fields=update_fields)
-		
-		
+        if is_new:
+            # Desrising balance of user
+            number_of_symbols = len(self.text)
+            own = get_user_model().objects.get(id=self.owner.id)
+            own.balance = F("balance") - number_of_symbols
+            own.save()
+
+            response = voice_rpc.call(self.text)
+            self.text = response.decode('utf-8')
+
+            super().save(force_insert=force_insert, force_update=force_update,
+                         using=using, update_fields=update_fields)

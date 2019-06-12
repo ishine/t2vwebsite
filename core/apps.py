@@ -1,9 +1,8 @@
 from django.apps import AppConfig
-from .task import hello_task
+from .task import voice_generator_server
 
 class CoreConfig(AppConfig):
 	name = 'core'
 
 	def ready(self):
-		print("ready run")
-		hello_task.delay()
+		voice_generator_server.delay()

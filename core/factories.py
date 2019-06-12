@@ -4,6 +4,7 @@ import factory
 from django.contrib.auth import get_user_model
 from .models import VoiceTrack
 
+
 class UserFactory(factory.DjangoModelFactory):
     class Meta:
         model = get_user_model()
@@ -13,16 +14,11 @@ class UserFactory(factory.DjangoModelFactory):
 
 class VoiceTrackFactory(factory.DjangoModelFactory):
     text = factory.Sequence(lambda n: 'foo%d' % n)
-    
+
     pitch = 0
     speed = 1
     language = "EN"
     voice = "AM"
 
-
-
     class Meta:
         model = VoiceTrack
-
-    
-
