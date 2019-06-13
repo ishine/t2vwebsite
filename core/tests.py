@@ -57,17 +57,12 @@ class MainTestCase(TestCase):
     Tests the MainPage view
     """
 
-    REQUEST = RequestFactory().get(path='/')
-
     def test_GET_on_day_with_no_questions(self):
-        response = views.MainPage.as_view()(
-            self.REQUEST,
-        )
+        response = self.client.get('/', follow=True)
+       
         self.assertEqual(200, response.status_code)
         self.assertEqual(['main.html'],
                          response.template_name)
-        self.assertContains(
-            response, '< form action="create_voice/" method="post" id="voice_form" >')
 
 
 class TestAPI(APITestCase):
