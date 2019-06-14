@@ -1,5 +1,6 @@
 import uuid
 import logging
+import random
 from django.conf import settings
 from django.db import models
 from django.db.models import F
@@ -78,6 +79,6 @@ class VoiceTrack(models.Model):
 
             response = voice_rpc.call(self.text)
             self.text = response.decode('utf-8')
-
+            self.duration = random.randint(1, 3)
             super().save(force_insert=force_insert, force_update=force_update,
                          using=using, update_fields=update_fields)

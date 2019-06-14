@@ -31,61 +31,61 @@ INTERNAL_IPS = '127.0.0.1'
 # Application definition
 
 INSTALLED_APPS = [
-	
-	# apps
-	'users',
-	'core',
-	
-	# stuff
-	'debug_toolbar',
-	'crispy_forms',
-	'django.contrib.humanize',
-	
 
-	# other
-	'rest_framework',
-	'rest_framework_swagger',
+    # apps
+    'users',
+    'core',
+
+    # stuff
+    'debug_toolbar',
+    'crispy_forms',
+    'django.contrib.humanize',
+
+
+    # other
+    'rest_framework',
+    'rest_framework_swagger',
     'rest_framework.authtoken',
     'captcha',
-	'django_celery_results',
+    'django_celery_results',
 
-	'django.contrib.admin',
-	'django.contrib.auth',
-	'django.contrib.contenttypes',
-	'django.contrib.sessions',
-	'django.contrib.messages',
-	'django.contrib.staticfiles',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
 
 ]
 
 MIDDLEWARE = [
-	'debug_toolbar.middleware.DebugToolbarMiddleware',
-	'django.middleware.security.SecurityMiddleware',
-	'django.contrib.sessions.middleware.SessionMiddleware',
-	'django.middleware.common.CommonMiddleware',
-	'django.middleware.csrf.CsrfViewMiddleware',
-	'django.contrib.auth.middleware.AuthenticationMiddleware',
-	'django.contrib.messages.middleware.MessageMiddleware',
-	'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
 ]
 
 ROOT_URLCONF = 'voice_project.urls'
 
 TEMPLATES = [
-	{
-		'BACKEND': 'django.template.backends.django.DjangoTemplates',
-		'DIRS': [os.path.join(BASE_DIR, ''), os.path.join(BASE_DIR, 'templates')],
-		'APP_DIRS': True,
-		'OPTIONS': {
-			'context_processors': [
-				'django.template.context_processors.debug',
-				'django.template.context_processors.request',
-				'django.contrib.auth.context_processors.auth',
-				'django.contrib.messages.context_processors.messages',
-			],
-		},
-	},
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, ''), os.path.join(BASE_DIR, 'templates')],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
 ]
 
 WSGI_APPLICATION = 'voice_project.wsgi.application'
@@ -95,14 +95,14 @@ WSGI_APPLICATION = 'voice_project.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-	'default': {
-		'ENGINE': 'django.db.backends.postgresql_psycopg2',
-		'NAME': 'voice',
-		'USER': 'voice_user',
-		'PASSWORD': 'peoplecanfly5',
-		'HOST': 'localhost',
-		'PORT': '',
-	}
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'voice',
+                'USER': 'voice_user',
+                'PASSWORD': 'peoplecanfly5',
+                'HOST': 'localhost',
+                'PORT': '',
+    }
 }
 
 
@@ -110,26 +110,26 @@ DATABASES = {
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-	{
-		'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-	},
-	{
-		'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-	},
-	{
-		'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-	},
-	{
-		'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-	},
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
 ]
 
 CACHES = {
-	'default': {
-		'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-		'LOCATION': 'default-locmemcache',
-		'TIMEOUT': 5,
-	}
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'default-locmemcache',
+        'TIMEOUT': 5,
+    }
 }
 
 REST_FRAMEWORK = {
@@ -147,7 +147,7 @@ REST_FRAMEWORK = {
     },
 }
 
-# auntification 
+# auntification
 AUTH_USER_MODEL = 'users.CustomUser'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -189,7 +189,7 @@ LOGOUT_REDIRECT_URL = 'core:MainPage'
 # Media
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(
-	BASE_DIR, '../media_root')
+    BASE_DIR, '../media_root')
 
 CELERY_RESULT_BACKEND = 'django-db'
 CELERY_BROKER_URL = 'amqp://localhost'
