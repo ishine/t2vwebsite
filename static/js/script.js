@@ -49,18 +49,11 @@ function updateTextInput2(val) {
 ==================================
 **/
 
-$('.submit-btn').click(function() {  
-	$('.download-input-btn').attr('disabled', true);
-    $('.submit-btn').attr('disabled', true);
-    $('.cssload-bell').css('visibility', 'visible');
 
+$('#voice_form').submit(function(){
+  $('.cssload-bell').css('visibility', 'visible');
+  return true;
 });
-$('.download-input-btn').click(function() {  
-	$('.download-input-btn').attr('disabled', true);
-    $('.submit-btn').attr('disabled', true);
-    $('.cssload-bell').css('visibility', 'visible');
-});
-
 /**
 ==================================
 
@@ -105,3 +98,15 @@ $('.tog').click(function() {
 	$('.audio-player').toggle()
 
 });
+
+
+/**
+==================================
+
+ link click conformation 
+
+==================================
+**/
+$('.link_del_track').click(function(){
+    return confirm("Are you sure you want to delete track?");
+})

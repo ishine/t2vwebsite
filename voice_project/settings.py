@@ -26,20 +26,40 @@ SECRET_KEY = 'kcxjw!9y@31njfr#@&w^x8l84qosl-8da@!1^57ia!yc*t9g_k'
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1']
-
+INTERNAL_IPS = '127.0.0.1'
 
 # Application definition
 
 INSTALLED_APPS = [
+
+    # apps
+    'users',
+    'core',
+
+    # stuff
+    'debug_toolbar',
+    'crispy_forms',
+    'django.contrib.humanize',
+
+
+    # other
+    'rest_framework',
+    'rest_framework_swagger',
+    'rest_framework.authtoken',
+    'captcha',
+    'django_celery_results',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -47,6 +67,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'voice_project.urls'
@@ -75,8 +96,12 @@ WSGI_APPLICATION = 'voice_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'voice',
+                'USER': 'voice_user',
+                'PASSWORD': 'peoplecanfly5',
+                'HOST': 'localhost',
+                'PORT': '',
     }
 }
 
@@ -99,6 +124,41 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'default-locmemcache',
+        'TIMEOUT': 5,
+    }
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ),
+    'DEFAULT_THROTTLE_CLASSES': (
+        'rest_framework.throttling.UserRateThrottle',
+        'rest_framework.throttling.AnonRateThrottle',
+    ),
+    'DEFAULT_THROTTLE_RATES': {
+        'user': '60000/min',
+        'anon': '30/min',
+    },
+}
+
+# auntification
+AUTH_USER_MODEL = 'users.CustomUser'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'gwinbleidd99@gmail.com'
+EMAIL_HOST_PASSWORD = 'oziappatwyzrrmon'
+EMAIL_PORT = 587
+
+RECAPTCHA_PUBLIC_KEY = '6LdeL6UUAAAAACBQOEElmrQrGHrHWPEq_Y05FIio'
+RECAPTCHA_PRIVATE_KEY = '6LdeL6UUAAAAAP_IBIa-31ezLRuHPqNwLwKPYgV0'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
@@ -112,11 +172,24 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_URL = '/static/'
-LOGIN_URL = '/'
+
+# Login
+LOGIN_URL = 'users:login'
+LOGIN_REDIRECT_URL = 'core:MainPage'
+LOGOUT_REDIRECT_URL = 'core:MainPage'
+
+
+# Media
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(
+    BASE_DIR, '../media_root')
+
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_BROKER_URL = 'amqp://localhost'
