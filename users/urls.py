@@ -3,7 +3,6 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth import urls
 from django.conf.urls import url, include
 from django.contrib.auth import views as auth_views
-
 import users.views
 
 
