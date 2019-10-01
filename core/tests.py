@@ -12,7 +12,6 @@ from rest_framework.test import APIClient
 from rest_framework.authtoken.models import Token
 from .factories import VoiceTrackFactory, UserFactory
 from .models import VoiceTrack
-
 import core.views as views
 
 
