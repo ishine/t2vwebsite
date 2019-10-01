@@ -22,3 +22,5 @@ class VoiceTrackFactory(factory.DjangoModelFactory):
 
     class Meta:
         model = VoiceTrack
+
+        
