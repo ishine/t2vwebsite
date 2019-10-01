@@ -13,7 +13,6 @@ def voice_generator_server():
 
     # callback method
     def on_request(ch, method, props, body):
-
         # action
         text = body.decode('utf-8')
 
