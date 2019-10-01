@@ -1,7 +1,6 @@
 import pika
 import uuid
 
-
 # client for rpc RabbitMQ
 class VoiceGeneratorRpcClient(object):
     def __init__(self):
