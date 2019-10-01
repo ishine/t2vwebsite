@@ -1,6 +1,7 @@
 from django.apps import AppConfig
 from .task import voice_generator_server
 
+
 class CoreConfig(AppConfig):
 	name = 'core'
 
