@@ -16,7 +16,6 @@ class UserCanUseVoiceTrack(BasePermission):
 	message = 'User cant get this track.'
 
 	def has_object_permission(self, request, view, obj):
-
 		user = request.user
 		if type(obj) is VoiceTrack:
 			return obj.user_have_permis(user)
