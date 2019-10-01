@@ -9,7 +9,6 @@ from .client import VoiceGeneratorRpcClient
 
 
 logger = logging.getLogger(__name__)
-
 # Create your models here.
 # Language choices
 ENGLISH = 'EN'
