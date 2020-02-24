@@ -5,5 +5,6 @@ from celery import Celery
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'voice_project.settings')
 
 app = Celery('voice')
+app = Celery('voice')
 app.config_from_object('django.conf:settings', namespace='CELERY')
 app.autodiscover_tasks()
