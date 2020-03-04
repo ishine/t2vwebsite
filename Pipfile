@@ -8,7 +8,7 @@ verify_ssl = true
 [packages]
 django = "*"
 psycopg2 = "*"yh
-django-debug-toolbar = "*"
+django-debug-toolbar = "*"ff
 django-crispy-forms = "*"
 django-recaptcha = "*"django-crispy-forms = "*"
 django-recaptcha = "*"django-crispy-forms = "*"
