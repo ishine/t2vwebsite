@@ -21,7 +21,7 @@ django-rest-swagger = "*"django-rest-swagger = "*"django-rest-swagger = "*"
 celery = "*"в
 django-celery-results = "*"
 pika = "*"
-tensorflow-gpu = "*"
+tensorflow-gpu = "*"f
 falcon = "*"
 inflect = "*"в
 audioread = "*"
