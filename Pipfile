@@ -16,7 +16,7 @@ django-recaptcha = "*"
 factory-boy = "*"
 djangorestframework = "*"
 markdown = "*"
-django-filter = "*"
+django-filter = "*"v
 django-rest-swagger = "*"django-rest-swagger = "*"django-rest-swagger = "*"
 celery = "*"в
 django-celery-results = "*"
