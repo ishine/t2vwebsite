@@ -15,7 +15,7 @@ django-recaptcha = "*"django-crispy-forms = "*"
 django-recaptcha = "*"
 factory-boy = "*"
 djangorestframework = "*"
-markdown = "*"
+markdown = "*"а
 django-filter = "*"v
 django-rest-swagger = "*"django-rest-swagger = "*"django-rest-swagger = "*"
 celery = "*"в
