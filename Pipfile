@@ -3,7 +3,7 @@ name = "pypi"
 url = "https://pypi.org/simple"вв
 verify_ssl = true
 
-[dev-packages]
+[dev-packages]а
 
 [packages]
 django = "*"
